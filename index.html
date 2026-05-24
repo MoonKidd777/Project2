@@ -7,54 +7,50 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Тест по переводу слов</h1>
+            <div class="flags">
+                <span class="flag">🇷🇺</span><span class="arrow">→</span><span class="flag">🇬🇧</span>
+            </div>
+        </header>
 
-<div class="container">
-    <header>
-        <h1>Тест по переводу слов</h1>
-        <div class="flags">
-            <span class="flag">🇷🇺</span>
-            <span class="arrow">→</span>
-            <span class="flag">🇬🇧</span>
+        <div class="controls">
+            <label>
+                <input type="radio" name="direction" value="ru_to_en" checked> Русский → Английский
+            </label>
+            <label>
+                <input type="radio" name="direction" value="en_to_ru"> Английский → Русский
+            </label>
         </div>
-    </header>
 
-    <div class="controls">
-        <label>
-            <input type="radio" name="direction" value="ru_to_en" checked> Русский → Английский
-        </label>
-        <label>
-            <input type="radio" name="direction" value="en_to_ru"> Английский → Русский
-        </label>
-    </div>
-
-    <div id="word-display" class="word-display">
-        <p>Нажмите "Начать", чтобы начать тест.</p>
-    </div>
-
-    <div class="input-area">
-        <input type="text" id="answer-input" placeholder="Введите перевод...">
-        <button id="check-btn">Проверить</button>
-        <button id="reset-btn">Начать заново</button>
-    </div>
-
-    <div class="progress-container">
-        <div class="progress-label">Ваш прогресс:</div>
-        <div class="progress-bar">
-            <div id="progress-fill" class="progress-fill"></div>
+        <div id="word-display" class="word-display">
+            Нажмите "Начать", чтобы начать тест.
         </div>
+
+        <div class="input-area">
+            <input type="text" id="answer-input" placeholder="Введите перевод..." disabled>
+            <button id="check-btn" disabled>Проверить</button>
+            <button id="reset-btn">Начать заново</button>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-label">Ваш прогресс:</div>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div id="stats" class="stats">
+            Верных ответов: 0 | Ошибок: 0 | Осталось: 0
+        </div>
+
+        <footer id="result-screen" class="result-screen hidden">
+            <h2>Тест завершён!</h2>
+            <p id="final-result"></p>
+            <button id="play-again-btn">Сыграть снова</button>
+        </footer>
     </div>
-
-    <div id="stats" class="stats">
-        Верных ответов: 0 | Ошибок: 0 | Осталось: 0
-    </div>
-
-    <footer id="result-screen" class="result-screen hidden">
-        <h2>Тест завершён!</h2>
-        <p id="final-result"></p>
-        <button id="play-again-btn">Сыграть снова</button>
-    </footer>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
