@@ -9,7 +9,6 @@ body {
     align-items: center;
     min-height: 100vh;
 }
-
 .container {
     background-color: white;
     border-radius: 12px;
@@ -18,7 +17,6 @@ body {
     width: 100%;
     max-width: 500px;
 }
-
 /* Заголовок */
 header {
     text-align: center;
@@ -30,7 +28,6 @@ header {
 .arrow {
     font-size: 32px;
 }
-
 /* Кнопки и ввод */
 .input-area {
     display: flex;
@@ -54,7 +51,6 @@ button {
 #check-btn { background-color: #2e7d32; color: white; }
 #reset-btn { background-color: #757575; color: white; }
 #play-again-btn { background-color: #4caf50; color: white; }
-
 /* Прогресс-бар */
 .progress-container {
     display: flex;
@@ -78,13 +74,11 @@ button {
     width: 0%;
     background-color: #8BC6EB; /* Голубой */
 }
-
 /* Статистика */
 .stats {
     text-align: center;
     margin-top: 15px;
 }
-
 /* Слово для перевода */
 .word-display {
     text-align: center;
@@ -92,7 +86,6 @@ button {
     font-weight: bold;
     margin-top: 30px;
 }
-
 /* Результат */
 .result-screen {
     text-align: center;
