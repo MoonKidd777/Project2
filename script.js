@@ -143,20 +143,29 @@ function checkAnswer() {
 }
 
 function showResults() {
-   wordDisplay.innerHTML = '';
-   
-   let resultText = `🎉 Тест завершён!\n\n`;
-   resultText += `✅ Правильных ответов (с первой попытки): ${stats.correct}\n`;
-   resultText += `❌ Ошибок (уникальных слов): ${stats.mistakes}\n\n`;
-   
-   resultText += `Слова с ошибками:\n`;
-   resultText += mistakesList.length > 0 ? mistakesList.join(', ') : '—';
-   
-   finalResultText.textContent = resultText.replaceAll('\n', '<br><br>'); // Для переноса строк в HTML
+    wordDisplay.innerHTML = '';
 
-   resultScreen.classList.remove('hidden');
-   
-   // Блокируем ввод после завершения теста
-   checkBtn.disabled = true; 
-   answerInput.disabled = true; 
+    // Формируем текст с результатами, используя шаблонные литералы
+    let resultText = `🎉 Тест завершён!<br><br>`;
+    resultText += `✅ Правильных ответов (с первой попытки): ${stats.correct}<br>`;
+    resultText += `❌ Ошибок (уникальных слов): ${stats.mistakes}<br><br>`;
+
+    // Формируем список слов с ошибками
+    resultText += `Слова с ошибками:<br>`;
+    if (mistakesList.length > 0) {
+        // Используем .join('<br> - ') для красивого вывода каждого слова с новой строки
+        resultText += `- ${mistakesList.join('<br> - ')}`;
+    } else {
+        resultText += `—`;
+    }
+
+    // Вставляем готовый HTML в элемент на странице
+    finalResultText.innerHTML = resultText;
+
+    // Показываем экран с результатами
+    resultScreen.classList.remove('hidden');
+    
+    // Блокируем ввод после завершения теста
+    checkBtn.disabled = true;
+    answerInput.disabled = true;
 }
