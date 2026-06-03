@@ -143,26 +143,27 @@ function checkAnswer() {
 }
 
 function showResults() {
-    wordDisplay.innerHTML = '';
-
-    // Формируем текст с помощью шаблонного литерала, сразу добавляя HTML-теги <br> там, где нужен один перенос.
-    // Обратите внимание: <br> используется только один раз для создания одной пустой строки.
-    const resultText = `
-        🎉 Тест завершён!<br><br>
-        ✅ Правильных ответов (с первой попытки): ${stats.correct}<br><br>
-        ❌ Ошибок (уникальных слов): ${stats.mistakes}<br><br>
-
-        Слова с ошибками:<br>
-        ${mistakesList.length > 0 ? mistakesList.join(', ') : '—'}
-    `;
-
-    // Вставляем готовый HTML в элемент
-    finalResultText.innerHTML = resultText;
-
-    // Показываем экран с результатами
-    resultScreen.classList.remove('hidden');
+    wordDisplay.textContent = '';
+    userInput.disabled = true;
     
-    // Блокируем ввод
-    checkBtn.disabled = true;
-    answerInput.disabled = true;
+    finalScore.textContent = `✅ Правильных ответов: ${stats.correct}\n❌ Ошибок допущено: ${stats.mistakes}`;
+    
+    if (mistakesLog.length > 0) {
+        mistakesList.textContent = `Слова с ошибками:\n${mistakesLog.join(', ')}`;
+    } else {
+        mistakesList.textContent = 'Слова с ошибками:\n—';
+    }
+    
+    resultBox.classList.remove('hidden');
 }
+
+// --- Слушатели событий ---
+checkBtn.addEventListener('click', checkAnswer);
+resetBtn.addEventListener('click', resetGame);
+directionRadios.forEach(radio => radio.addEventListener('change', resetGame));
+userInput.addEventListener('keydown', function(event) {
+   if (event.key === 'Enter') checkAnswer(); 
+});
+
+// Запуск игры при загрузке страницы
+document.addEventListener('DOMContentLoaded', resetGame);
