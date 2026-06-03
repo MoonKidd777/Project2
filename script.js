@@ -145,27 +145,24 @@ function checkAnswer() {
 function showResults() {
     wordDisplay.innerHTML = '';
 
-    // Формируем текст с результатами, используя шаблонные литералы
-    let resultText = `🎉 Тест завершён!<br><br>`;
-    resultText += `✅ Правильных ответов (с первой попытки): ${stats.correct}<br>`;
-    resultText += `❌ Ошибок (уникальных слов): ${stats.mistakes}<br><br>`;
+    // Формируем текст с помощью шаблонного литерала, сразу добавляя HTML-теги <br> там, где нужен один перенос.
+    // Обратите внимание: <br> используется только один раз для создания одной пустой строки.
+    const resultText = `
+        🎉 Тест завершён!<br><br>
+        ✅ Правильных ответов (с первой попытки): ${stats.correct}<br><br>
+        ❌ Ошибок (уникальных слов): ${stats.mistakes}<br><br>
 
-    // Формируем список слов с ошибками
-    resultText += `Слова с ошибками:<br>`;
-    if (mistakesList.length > 0) {
-        // Используем .join('<br> - ') для красивого вывода каждого слова с новой строки
-        resultText += `- ${mistakesList.join('<br> - ')}`;
-    } else {
-        resultText += `—`;
-    }
+        Слова с ошибками:<br>
+        ${mistakesList.length > 0 ? mistakesList.join(', ') : '—'}
+    `;
 
-    // Вставляем готовый HTML в элемент на странице
+    // Вставляем готовый HTML в элемент
     finalResultText.innerHTML = resultText;
 
     // Показываем экран с результатами
     resultScreen.classList.remove('hidden');
     
-    // Блокируем ввод после завершения теста
+    // Блокируем ввод
     checkBtn.disabled = true;
     answerInput.disabled = true;
 }
